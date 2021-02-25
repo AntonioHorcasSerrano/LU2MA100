@@ -11,7 +11,7 @@ def truncated_qa(n):
     return Sum((-1)**k/(2*k+1), (k, 0, n)).doit().evalf()
 
 def tr_qa_increase(e):
-    n=1
+    n=0
     while (Abs((pi-4*truncated_qa(n)))).evalf() >= e:
         n=n+1
     return n
