@@ -10,17 +10,16 @@ e=0.1
 def truncated_qa(n):
     return Sum((-1)**k/(2*k+1), (k, 0, n)).doit().evalf()
 
+def truncated_qa1(n):
+    s=0
+    for k in range(0,n+1):
+        s=s+(-1)**k/(2*k+1)
+    return s
+
 def tr_qa_increase(e):
-    n=0
-    while (Abs((pi-4*truncated_qa(n)))).evalf() >= e:
+    n=1
+    while (Abs((pi-4*truncated_qa1(n)))).evalf() >= e:
         n=n+1
     return n
 
-print(tr_qa_increase(0.05))
-
-l = [(n,(Abs((pi-4*truncated_qa(n)))).evalf()) for n in range(3,101)]
-plt.scatter(*zip(*l))
-plt.title(r'$\left|\pi -4 S_n\right|$ en fonction de $n$')
-plt.xlabel(r'$n$')
-plt.ylabel(r'$\left|\pi -4 S_n\right|$')
-plt.show()
+print(tr_qa_increase(0.012))
