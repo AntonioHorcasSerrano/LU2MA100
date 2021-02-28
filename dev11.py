@@ -46,3 +46,23 @@ def needleman_wunsch(A,B):
 
 assert needleman_wunsch('GAATTCAGTTA','GGATCGA')==4
 assert needleman_wunsch('TGACGTGC','TCGACGTCA')==5
+
+SEQ="CGTCCGGTTTCGATTGGAGGGCTCGGAA"
+D=dict()
+with open("adn.txt","r") as file:
+    for ligne in file:
+        (first, last, seq) = ligne.split()
+        key = needleman_wunsch(SEQ,seq)
+        if key not in D:
+            D[key]=[(first, last, seq)]
+        else:
+            D[key].append((first, last, seq))
+
+import pprint
+L=list()
+for score in reversed(sorted(D)):
+    for person in D[score]:
+        first, last, sequence = person
+        L.append((score, first, last))
+for k in range(8):
+    pprint.pprint(L[k])
