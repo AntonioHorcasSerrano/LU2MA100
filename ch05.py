@@ -20,3 +20,5 @@ for i in range(nbi):
 print("integrale =", integrale)
 
 plt.show()
+
+# https://www.math.ubc.ca/~pwalls/math-python/integration/trapezoid-rule/
