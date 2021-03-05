@@ -15,10 +15,16 @@ for i in range(nbi):
     integrale = integrale + y[i]*(x[i+1]-x[i])
     # dessin du rectangle
     x_rect = [x[i], x[i], x[i+1], x[i+1], x[i]] # abscisses des sommets
-    y_rect = [0   , y[i], y[i]  , 0     , 0   ] # ordonnees des sommets
+    y_rect = [0   , y[i], y[i]+0.1  , 0     , 0   ] # ordonnees des sommets
     plt.plot(x_rect, y_rect,"r")
 print("integrale =", integrale)
+data = [
+    [1, 2],
+    [3, 2],
+]
 
+x, y = zip(*data)
+plt.plot(x, y)
 plt.show()
 
 # https://www.math.ubc.ca/~pwalls/math-python/integration/trapezoid-rule/
