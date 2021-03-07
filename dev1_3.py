@@ -24,3 +24,21 @@ assert gauche([0, 0], [-1, 2], [0, 0]) == False
 assert gauche([0, 0], [0, 0], [-1, 2]) == True
 assert gauche([0, 0], [-1, 2], [-2, 2]) == False
 assert gauche([0, 0], [-2, 2], [-1, 2]) == True
+
+def prochain_point(L, i, debug=False):
+    valeurs = []
+    for j in range(len(L)):
+        if j == i:
+            continue
+        v = 0
+        for k in range(len(L)):
+            if k == i or k == j:
+                continue
+            v += orientation(L[i], L[j], L[k])  # on calcul la somme des orientations assossiées à un sommet
+        valeurs.append((j, v))
+        if debug:
+            print(valeurs)
+    valeurs.sort(key=lambda x: x[1])  # on tri (croissant) selon la valeur d'orientation associée au sommet
+    if debug:
+        print(valeurs)
+    return valeurs[-1][0]
