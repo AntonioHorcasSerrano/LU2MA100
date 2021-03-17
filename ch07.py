@@ -10,21 +10,25 @@ print(X.jacobian(Y))
 
 from scipy import misc
 
-def f(x):
-    return (1.0/4.0)*x**3+(3.0/4.0)*x**2-(3.0/2.0)*x-2
+# def f(x):
+#     return (1.0/4.0)*x**3+(3.0/4.0)*x**2-(3.0/2.0)*x-2
 
-def newton1d(f, point, epsilon=1e-6):
-    while True:
-        nextpoint = point - f(point) / diff(f(x),x).subs(x,point)
-        dif = abs(nextpoint - point)
-        if dif < epsilon:
-            break
-        point = nextpoint
-    return point
+def newton(F, DF, x0, eps=1e-10, N=1000):
+    while N > 0 and abs(F(x0)) >= eps:
+        x1 = x0 - F(x0) / DF(x0)
+        x0 = x1
+    return x0
 
-point = 4
-x0 = newton1d(f, point)
+def F(x):
+    return x**3 - 27
 
-print('x: ', point)
-print('x0: ', x0)
-print("f(x0) = ", ((1.0/4.0)*x0**3+(3.0/4.0)*x0**2-(3.0/2.0)*x0-2 ))
+def DF(x):
+    return 3*x**2
+
+# newton(F, DF, 1)
+
+def racine1(x, n):
+    F = y**n - x
+    DF = diff(F,y)
+    print(DF)
+    #newton(F, DF, 1)
