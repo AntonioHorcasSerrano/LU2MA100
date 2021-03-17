@@ -19,16 +19,15 @@ def newton(F, DF, x0, eps=1e-10, N=1000):
         x0 = x1
     return x0
 
-def F(x):
-    return x**3 - 27
+import math
+F = lambda x: math.exp(-x)-x
+DF = lambda x: -1-(math.exp(-x))
+def newton(F,DF,x0,eps=1e-10,N=10):
+    xn = x0
+    for _ in range(0,N+1):
+        if abs(F(xn)) < eps:
+            return xn
+        xn = xn - F(xn)/DF(xn)
+    return None
 
-def DF(x):
-    return 3*x**2
-
-# newton(F, DF, 1)
-
-def racine1(x, n):
-    F = y**n - x
-    DF = diff(F,y)
-    print(DF)
-    #newton(F, DF, 1)
+print(newton(F,DF,1))
