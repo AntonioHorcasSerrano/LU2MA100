@@ -31,3 +31,5 @@ def newton(F,DF,x0,eps=1e-10,N=10):
     return None
 
 print(newton(F,DF,1))
+
+import numpy as numpy
