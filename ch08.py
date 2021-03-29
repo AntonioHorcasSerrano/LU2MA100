@@ -9,6 +9,7 @@ def touschemins(K, i, f, c=set()):
         for n in K[i]:
             if n not in c:
                 cs_ = touschemins(K, n, f, c)
+                print(c)
                 for nc in cs_:
                     cs.append(nc)
         return cs
@@ -18,7 +19,6 @@ def touschemins(K, i, f, c=set()):
 
 def find_all_paths(graph, start, end, path=[]):
         path = path + [start]
-        print('recursion avec:',path)
         if start == end:
             return [path]
         if start not in graph:
@@ -27,21 +27,22 @@ def find_all_paths(graph, start, end, path=[]):
         for node in graph[start]:
             if node not in path:
                 newpaths = find_all_paths(graph, node, end, path)
+                print(path)
                 for newpath in newpaths:
                     paths.append(newpath)
         return paths
-print(find_all_paths({1: {2, 3, 4}, 2: {1, 3}, 3: {1, 2}, 4: {1}},2,3))
+# print(find_all_paths({1: {2, 3, 4}, 2: {1, 3}, 3: {1, 2}, 4: {1}},2,3))
 
-def factorial_recursive(n):
-    print(n)
+def recursive(n, s=[]):
+    s = s + [n]
     if n == 1:
         return 1
-
-    # Recursive case: n! = n * (n-1)!
     else:
-        return n + factorial_recursive(n-1)
+        k = recursive(n-1,s)
+        print(k)
+        return n + k
 
-# print(factorial_recursive(4))
+print(recursive(4))
 
 def Fibb(n):
     if n==0 or n==1:
