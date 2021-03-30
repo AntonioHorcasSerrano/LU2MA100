@@ -33,13 +33,25 @@ def find_all_paths(graph, start, end, path=[]):
         return paths
 # print(find_all_paths({1: {2, 3, 4}, 2: {1, 3}, 3: {1, 2}, 4: {1}},2,3))
 
-def recursive(n, s=[]):
+def recursive(n, s):
     s = s + [n]
     if n == 1:
         return 1
     else:
         k = recursive(n-1,s)
-        print(k)
+        print(s)
+        return n + k
+# s=list()
+# print(recursive(4))
+
+def recursive(n, s=set()):
+    s = s.copy()
+    s.add(n)
+    if n == 1:
+        return 1
+    else:
+        k = recursive(n-1,s)
+        print(s)
         return n + k
 
 print(recursive(4))
