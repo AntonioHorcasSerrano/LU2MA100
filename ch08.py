@@ -1,4 +1,5 @@
 def touschemins(K, i, f, c=set()):
+        c = c.copy()
         c.add(i)
         print('recursion avec:',c)
         if i == f:
@@ -31,7 +32,7 @@ def find_all_paths(graph, start, end, path=[]):
                 for newpath in newpaths:
                     paths.append(newpath)
         return paths
-# print(find_all_paths({1: {2, 3, 4}, 2: {1, 3}, 3: {1, 2}, 4: {1}},2,3))
+print(find_all_paths({1: {2, 3, 4}, 2: {1, 3, 4}, 3: {1, 2, 4}, 4: {1, 2, 3}},2,3))
 
 def recursive(n, s):
     s = s + [n]
@@ -54,7 +55,7 @@ def recursive(n, s=set()):
         print(s)
         return n + k
 
-print(recursive(4))
+# print(recursive(4))
 
 def Fibb(n):
     if n==0 or n==1:
