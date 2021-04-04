@@ -78,3 +78,22 @@ def chemin(K, i, f, c=set()):
     return None
 
 # print(chemin({1: {2, 3, 4}, 2: {1, 3}, 3: {1, 2}, 4: {1}},2,3))
+
+import numpy as np
+a = np.array([[0, 1, 1, 1], [1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 1, 0]])
+b = np.linalg.matrix_power(a,2)
+# les éléments diagonaux répresentent le nombre d'arêtes de chaque sommet
+# avec B on voit s'il y a un chemin de dimension 2 entre les deux indices. A partir de A on voit s'il ont une arête en commun, ce qui signifie que c'est un triangle. Ensuite il faut vérifier s'il sont connectés entre 
+n = a.shape[0]
+l = list()
+print(b)
+for i in range(n):
+    for j in range(i+1,n):
+        if b[i][j] >= 1: # il y a au moins un chemin d'ordre 2 entre i et j
+            t = a[i] + a[j]
+            for v in range(n):
+                if t[v] > 1:   
+                    print({i,j,v})
+                    if {i,j,v} not in l:
+                        l.append({i,j,v})
+print(l)
