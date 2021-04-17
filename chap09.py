@@ -1,20 +1,34 @@
 #module pour lire les csv
 import csv
-#module pour faire un graphique
-from pylab import *
-#ouverture du fichier 
-lecture= open('vac.csv','r')
-read = csv.reader(lecture, dialect='excel')
-li=list(read)
-#on fait un tableau forme du premier caractere
-#de la premiere chaine (il n y en a qu une)
-#de chaque ligne non vide
-compt=[int(elem[0][0]) for elem in li if len(elem) > 0 ] 
-abs=range(1,10)
-#on compte
-effe=[compt.count(k) for k in abs]
-#on represente
-bar(abs,effe,width=0.35,color='r',align='center',edgecolor='b')
-show()
-lecture.close()
-#  1234 // 10**(len(str(1234))-1)
+import matplotlib.pyplot as plt
+import numpy as np
+
+def firstdigit(n):
+    # n est un nombre entier positif
+    return n // 10**(len(str(n))-1)
+
+
+def occurrences(liste):
+    ocur = list()
+    nombres = np.vectorize(firstdigit)(liste)
+    for d in range(1,10):
+        ocur.append(np.count_nonzero(nombres == d))
+    return ocur
+
+
+fichier = open('BTT_TD_POP1A_2016.txt','r')
+tableau = csv.reader(fichier, delimiter=';')
+L = list(tableau)
+print(L[0])
+print(L[1])
+print(L[2])
+print(L[3])
+L1 = list()
+print(len(L))
+print(L[690000][5])
+for line in range((350000)):
+    if L[line][5].replace('.','',1).isdigit():
+        L1.append(int(float(L[line][5])))
+values = occurrences(L1)
+plt.bar(range(1,10),values)
+plt.show()
