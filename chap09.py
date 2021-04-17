@@ -26,9 +26,10 @@ print(L[3])
 L1 = list()
 print(len(L))
 print(L[690000][5])
+print(L[692000][5])
 for line in range((350000)):
     if L[line][5].replace('.','',1).isdigit():
         L1.append(int(float(L[line][5])))
 values = occurrences(L1)
-plt.bar(range(1,10),values)
-plt.show()
+# plt.bar(range(1,10),values)
+# plt.show()
