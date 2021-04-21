@@ -1,3 +1,5 @@
+import numpy as np
+
 # def fib(k):
 #     if k == 1 or k == 0:
 #         return k
@@ -27,11 +29,10 @@
 
 def suite(n):
     # suite géométrique de premier terme 1 et raison 2
-    print(n)
     if n == 0:
         return 1
     else:
         return suite(n-1) * 2
-    
 
-print(suite(6))
+n=range(6)
+print(sum(np.vectorize(suite)(n)))
