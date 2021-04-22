@@ -1,4 +1,8 @@
+
+count = 0
 def combinaisons(E,k):
+    global count
+    count += 1
     if E == []:
         return []
     if k==0:
@@ -11,6 +15,7 @@ def combinaisons(E,k):
     return result
 
 Lt=list()
-for c in combinaisons([1,2,3],2):
+for c in combinaisons([1,2,3],4):
     Lt.append(tuple(c))
-print(Lt)
+print(len(Lt))
+print(count)
