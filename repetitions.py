@@ -1,4 +1,3 @@
-
 count = 0
 def combinaisons(E,k):
     global count
@@ -15,7 +14,12 @@ def combinaisons(E,k):
     return result
 
 Lt=list()
-for c in combinaisons([1,2,3],4):
+for c in combinaisons([1,2,3,4,5,6,7,8,9,10],9):
     Lt.append(tuple(c))
 print(len(Lt))
 print(count)
+
+# A=[['1'],['2'],['3'],['4']]
+# for a in A:
+#     a.insert(0,'#')
+#     print(A)
