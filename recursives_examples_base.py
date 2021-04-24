@@ -7,6 +7,9 @@
 
 # import numpy as np
 
+
+http://pythontutor.com/visualize.html#code=def%20fib%28k%29%3A%0A%20%20%20%20if%20k%20%3D%3D%201%20or%20k%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%20k%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20return%20fib%28k-1%29%20%2B%20fib%28k-2%29%0Afib%285%29&cumulative=false&heapPrimitives=nevernest&mode=edit&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false
+
 def fib(k):
     if k == 1 or k == 0:
         return k
