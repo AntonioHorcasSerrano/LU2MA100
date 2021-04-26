@@ -53,37 +53,44 @@
 # Python program to print all permutations with
 # duplicates allowed
  
-def toString(List):
-    return ''.join(List)
+# def toString(List):
+#     return ''.join(List)
  
-# Function to print permutations of string
-# This function takes three parameters:
-# 1. String
-# 2. Starting index of the string
-# 3. Ending index of the string.
-def permute(a, l, r):
-    if l==r:
-        print (toString(a))
-    else:
-        for i in range(l,r+1):
-            a[l], a[i] = a[i], a[l]
-            permute(a, l+1, r)
-            a[l], a[i] = a[i], a[l] # backtrack
+# # Function to print permutations of string
+# # This function takes three parameters:
+# # 1. String
+# # 2. Starting index of the string
+# # 3. Ending index of the string.
+# def permute(a, l, r):
+#     if l==r:
+#         print (toString(a))
+#     else:
+#         for i in range(l,r+1):
+#             a[l], a[i] = a[i], a[l]
+#             permute(a, l+1, r)
+#             a[l], a[i] = a[i], a[l] # backtrack
  
 # Driver program to test the above function
-string = "ABC"
-n = len(string)
-a = list(string)
-permute(a, 0, n-1)
+# string = "ABC"
+# n = len(string)
+# a = list(string)
+# permute(a, 0, n-1)
 
-def permute1(list, s):
-    if list == 1:
-        return s
+# def permute1(list, s):
+#     if list == 1:
+#         return s
+#     else:
+#         return [ y + x
+#                  for y in permute1(1, s)
+#                  for x in permute1(list - 1, s)
+#                  ]
+
+# print(permute1(2, ["a","b","c"]))
+# print(permute1(4, ["a","b","c"]))
+
+def z(n, c=0):
+    if n == 0:
+        return 0+0j
     else:
-        return [ y + x
-                 for y in permute1(1, s)
-                 for x in permute1(list - 1, s)
-                 ]
-
-print(permute1(2, ["a","b","c"]))
-print(permute1(4, ["a","b","c"]))
+        return z(n-1,c) * z(n-1,c) +  c
+print(z(3, 1+1j))
