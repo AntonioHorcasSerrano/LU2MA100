@@ -94,3 +94,11 @@ def z(n, c=0):
     else:
         return z(n-1,c) * z(n-1,c) +  c
 print(z(3, 1+1j))
+
+def syracuse(n):
+    if n == 1:
+        return [1]
+    elif n % 2:
+        return [n] + syracuse(n/2)
+    else:
+        return [n] + syracuse(n*3+1)
