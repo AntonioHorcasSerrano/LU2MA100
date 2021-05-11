@@ -4,7 +4,16 @@
 #     return gcd(q, p % q)
 
 # print (gcd(37,7))
-
+def gcd (a,b):
+    if (b == 0):
+        return a
+    else:
+         return gcd (b, a % b)
+A = [12, 24, 27, 30, 36]
+res = A[0]
+for c in A[1::]:
+    res = gcd(res , c)
+print(res)
 # import numpy as np
 
 # Combinaisons recursive (calcul des coefficients binomiaux)
@@ -88,17 +97,17 @@
 # print(permute1(2, ["a","b","c"]))
 # print(permute1(4, ["a","b","c"]))
 
-def z(n, c=0):
-    if n == 0:
-        return 0+0j
-    else:
-        return z(n-1,c) * z(n-1,c) +  c
-print(z(3, 1+1j))
+# def z(n, c=0):
+#     if n == 0:
+#         return 0+0j
+#     else:
+#         return z(n-1,c) * z(n-1,c) +  c
+# print(z(3, 1+1j))
 
-def syracuse(n):
-    if n == 1:
-        return [1]
-    elif n % 2:
-        return [n] + syracuse(n/2)
-    else:
-        return [n] + syracuse(n*3+1)
+# def syracuse(n):
+#     if n == 1:
+#         return [1]
+#     elif n % 2:
+#         return [n] + syracuse(n/2)
+#     else:
+#         return [n] + syracuse(n*3+1)
