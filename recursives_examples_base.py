@@ -4,19 +4,25 @@
 #     return gcd(q, p % q)
 
 # print (gcd(37,7))
-def gcd (a,b):
-    if (b == 0):
-        return a
-    else:
-         return gcd (b, a % b)
-A = [12, 24, 27, 30, 36]
-res = A[0]
-for c in A[1::]:
-    res = gcd(res , c)
-print(res)
+# def gcd (a,b):
+#     if (b == 0):
+#         return a
+#     else:
+#          return gcd (b, a % b)
+# A = [12, 24, 27, 30, 36]
+# res = A[0]
+# for c in A[1::]:
+#     res = gcd(res , c)
+# print(res)
 # import numpy as np
 
 # Combinaisons recursive (calcul des coefficients binomiaux)
+def combin(n,k):
+    """Nombre de combinaisons de n objets pris k a k (calcul récursif)"""
+    if k==0 or k==n:
+        return 1
+    return combin(n-1, k-1) + combin(n-1,k)
+print(combin(4 + 2 - 1, 2))
 
 # http://pythontutor.com/visualize.html#code=def%20combin%28n,k%29%3A%0A%20%20%20%20%22%22%22Nombre%20de%20combinaisons%20de%20n%20objets%20pris%20k%20a%20k%20%28calcul%20r%C3%A9cursif%29%22%22%22%0A%20%20%20%20if%20k%3D%3D0%20or%20k%3D%3Dn%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20a%20%3D%20combin%28n-1,%20k-1%29%0A%20%20%20%20b%20%3D%20combin%28n-1,k%29%0A%20%20%20%20print%28f'%28%7Bn%7D,%7Bk%7D%29,%7Ba%2Bb%7D'%29%0A%20%20%20%20return%20a%2Bb%0Acombin%284,2%29&cumulative=false&curInstr=59&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false
 
