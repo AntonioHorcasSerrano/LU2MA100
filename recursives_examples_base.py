@@ -16,9 +16,11 @@
 # print(res)
 # import numpy as np
 
+from IPython.display import display
 # Combinaisons recursive (calcul des coefficients binomiaux)
 def combin(n,k):
     """Nombre de combinaisons de n objets pris k a k (calcul récursif)"""
+    print(f'on calcule: {n}_{k}')
     if k==0 or k==n:
         return 1
     return combin(n-1, k-1) + combin(n-1,k)
