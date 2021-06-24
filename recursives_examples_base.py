@@ -16,15 +16,23 @@
 # print(res)
 # import numpy as np
 
-from IPython.display import display
-# Combinaisons recursive (calcul des coefficients binomiaux)
-def combin(n,k):
-    """Nombre de combinaisons de n objets pris k a k (calcul récursif)"""
-    print(f'on calcule: {n}_{k}')
-    if k==0 or k==n:
-        return 1
-    return combin(n-1, k-1) + combin(n-1,k)
-print(combin(4 + 2 - 1, 2))
+# from IPython.display import display
+# # Combinaisons recursive (calcul des coefficients binomiaux)
+# def combin(n,k):
+#     """Nombre de combinaisons de n objets pris k a k (calcul récursif)"""
+#     # print(f'on calcule: {n}_{k}')
+#     if k==0 or k==n:
+#         return 1
+#     return combin(n-1, k-1) + combin(n-1,k)
+
+# # traingle de Pascal, 10 lignes
+# ligne = list()
+# for n in range(11):
+#     for k in range(n + 1):
+#         ligne.append(combin(n, k))
+#     print(ligne)
+#     ligne = list()
+# print(combin(4 + 2 - 1, 2))
 
 # http://pythontutor.com/visualize.html#code=def%20combin%28n,k%29%3A%0A%20%20%20%20%22%22%22Nombre%20de%20combinaisons%20de%20n%20objets%20pris%20k%20a%20k%20%28calcul%20r%C3%A9cursif%29%22%22%22%0A%20%20%20%20if%20k%3D%3D0%20or%20k%3D%3Dn%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20a%20%3D%20combin%28n-1,%20k-1%29%0A%20%20%20%20b%20%3D%20combin%28n-1,k%29%0A%20%20%20%20print%28f'%28%7Bn%7D,%7Bk%7D%29,%7Ba%2Bb%7D'%29%0A%20%20%20%20return%20a%2Bb%0Acombin%284,2%29&cumulative=false&curInstr=59&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false
 
@@ -56,7 +64,8 @@ print(combin(4 + 2 - 1, 2))
     
 
 # print(suite(6))
-
+#
+# import numpy as np
 # def suite(n):
 #     # suite géométrique de premier terme 1 et raison 2
 #     if n == 0:
@@ -112,10 +121,15 @@ print(combin(4 + 2 - 1, 2))
 #         return z(n-1,c) * z(n-1,c) +  c
 # print(z(3, 1+1j))
 
-# def syracuse(n):
-#     if n == 1:
-#         return [1]
-#     elif n % 2:
-#         return [n] + syracuse(n/2)
-#     else:
-#         return [n] + syracuse(n*3+1)
+import numpy as np
+def syracuse(k):
+    if k == 0:
+        return 17
+    d = syracuse(k-1)
+    if d % 2 == 0:
+        return d // 2
+    else:
+        return 3 * d + 1
+
+S = np.vectorize(syracuse)
+print(S(range(10)))
