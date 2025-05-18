@@ -1,3 +1,5 @@
+# mandelbrot
+
 def mandelbrot(c):
     z = list()
     z.append(0+0j)
